@@ -50,17 +50,17 @@ function App() {
           </p>
         </div>
 
-        {/* 游戏卡片 - 横向滚动布局 */}
-        <div className="overflow-x-auto scrollbar-hide pb-4">
-          <div className="flex gap-4 px-4 sm:px-6 lg:px-8 min-w-max">
+        {/* 游戏卡片 - 双列布局 */}
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 mb-8 sm:mb-12">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             {games.map((game) => (
               <div
                 key={game.id}
-                className="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl touch-manipulation flex-shrink-0 w-[280px] sm:w-[320px]"
+                className="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl touch-manipulation"
               >
                 {/* 游戏图标区域 */}
-                <div className={`bg-gradient-to-br ${game.color} p-8 flex items-center justify-center`}>
-                  <div className="w-32 h-32 bg-white rounded-3xl flex items-center justify-center shadow-lg overflow-hidden">
+                <div className={`bg-gradient-to-br ${game.color} p-4 sm:p-8 flex items-center justify-center`}>
+                  <div className="w-20 h-20 sm:w-32 sm:h-32 bg-white rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-lg overflow-hidden">
                     <img
                       src={game.image}
                       alt={game.name}
@@ -71,12 +71,12 @@ function App() {
                 </div>
 
                 {/* 游戏信息区域 */}
-                <div className="p-6 flex flex-col">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+                <div className="p-3 sm:p-6 flex flex-col">
+                  <h2 className="text-lg sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-4 text-center">
                     {game.name}
                   </h2>
                   {game.description && (
-                    <p className="text-base text-gray-600 leading-relaxed mb-6 text-center">
+                    <p className="text-xs sm:text-base text-gray-600 leading-relaxed mb-3 sm:mb-6 text-center line-clamp-2 sm:line-clamp-none">
                       {game.description}
                     </p>
                   )}
@@ -87,21 +87,16 @@ function App() {
                       href={game.downloadLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center bg-gray-900 text-white py-4 px-8 rounded-xl text-base font-semibold hover:bg-gray-800 active:bg-gray-700 transition-all duration-200 touch-manipulation active:scale-95 transform shadow-lg hover:shadow-xl w-full"
+                      className="inline-flex items-center justify-center bg-gray-900 text-white py-3 sm:py-4 px-4 sm:px-8 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold hover:bg-gray-800 active:bg-gray-700 transition-all duration-200 touch-manipulation active:scale-95 transform shadow-lg hover:shadow-xl w-full"
                     >
                       立即体验
-                      <Download className="ml-2 w-5 h-5" />
+                      <Download className="ml-1 sm:ml-2 w-4 h-4 sm:w-5 sm:h-5" />
                     </a>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-
-        {/* 滚动提示 */}
-        <div className="text-center mt-6 mb-8 sm:mb-12">
-          <p className="text-sm text-gray-500">← 左右滑动查看更多 →</p>
         </div>
 
         {/* 特色功能展示 */}
