@@ -43,24 +43,24 @@ function App() {
       </header>
 
       {/* 内容区域 */}
-      <main className="max-w-7xl mx-auto px-4 py-6 sm:py-8 md:py-12 sm:px-6 lg:px-8">
-        <div className="mb-6 sm:mb-8 text-center px-2">
-          <p className="text-base sm:text-lg text-gray-600">
+      <main className="py-6 sm:py-8 md:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 sm:mb-6">
+          <p className="text-base sm:text-lg text-gray-600 text-center">
             精选热门平台，带给你极致娱乐体验
           </p>
         </div>
 
-        {/* 游戏卡片 - 横向布局 */}
-        <div className="space-y-4 sm:space-y-6 mb-8 sm:mb-12">
-          {games.map((game) => (
-            <div
-              key={game.id}
-              className="bg-white rounded-xl sm:rounded-2xl shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl touch-manipulation"
-            >
-              <div className="flex flex-col sm:flex-row">
+        {/* 游戏卡片 - 横向滚动布局 */}
+        <div className="overflow-x-auto scrollbar-hide pb-4">
+          <div className="flex gap-4 px-4 sm:px-6 lg:px-8 min-w-max">
+            {games.map((game) => (
+              <div
+                key={game.id}
+                className="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl touch-manipulation flex-shrink-0 w-[280px] sm:w-[320px]"
+              >
                 {/* 游戏图标区域 */}
-                <div className={`bg-gradient-to-br ${game.color} p-8 sm:p-10 flex items-center justify-center sm:w-64 flex-shrink-0`}>
-                  <div className="w-32 h-32 sm:w-40 sm:h-40 bg-white rounded-3xl flex items-center justify-center shadow-lg overflow-hidden">
+                <div className={`bg-gradient-to-br ${game.color} p-8 flex items-center justify-center`}>
+                  <div className="w-32 h-32 bg-white rounded-3xl flex items-center justify-center shadow-lg overflow-hidden">
                     <img
                       src={game.image}
                       alt={game.name}
@@ -71,23 +71,23 @@ function App() {
                 </div>
 
                 {/* 游戏信息区域 */}
-                <div className="flex-1 p-6 sm:p-8 flex flex-col justify-center">
-                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 text-center sm:text-left">
+                <div className="p-6 flex flex-col">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">
                     {game.name}
                   </h2>
                   {game.description && (
-                    <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-6 text-center sm:text-left">
+                    <p className="text-base text-gray-600 leading-relaxed mb-6 text-center">
                       {game.description}
                     </p>
                   )}
 
                   {/* 跳转按钮 */}
-                  <div className="flex justify-center sm:justify-start">
+                  <div className="flex justify-center mt-auto">
                     <a
                       href={game.downloadLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center bg-gray-900 text-white py-4 px-8 sm:px-12 rounded-xl text-base sm:text-lg font-semibold hover:bg-gray-800 active:bg-gray-700 transition-all duration-200 touch-manipulation active:scale-95 transform shadow-lg hover:shadow-xl"
+                      className="inline-flex items-center justify-center bg-gray-900 text-white py-4 px-8 rounded-xl text-base font-semibold hover:bg-gray-800 active:bg-gray-700 transition-all duration-200 touch-manipulation active:scale-95 transform shadow-lg hover:shadow-xl w-full"
                     >
                       立即体验
                       <Download className="ml-2 w-5 h-5" />
@@ -95,30 +95,37 @@ function App() {
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* 滚动提示 */}
+        <div className="text-center mt-6 mb-8 sm:mb-12">
+          <p className="text-sm text-gray-500">← 左右滑动查看更多 →</p>
         </div>
 
         {/* 特色功能展示 */}
-        <div className="bg-white rounded-xl sm:rounded-2xl shadow-md p-5 sm:p-8 mb-6 sm:mb-8">
-          <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">
-            为什么选择我们？
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-            <div className="text-center p-3 sm:p-0">
-              <div className="text-3xl sm:text-4xl mb-2">🎮</div>
-              <h4 className="font-semibold text-gray-900 mb-1 text-base sm:text-lg">精选平台</h4>
-              <p className="text-xs sm:text-sm text-gray-600">严格筛选优质娱乐平台</p>
-            </div>
-            <div className="text-center p-3 sm:p-0">
-              <div className="text-3xl sm:text-4xl mb-2">🔒</div>
-              <h4 className="font-semibold text-gray-900 mb-1 text-base sm:text-lg">安全可靠</h4>
-              <p className="text-xs sm:text-sm text-gray-600">官方正版安全保障</p>
-            </div>
-            <div className="text-center p-3 sm:p-0">
-              <div className="text-3xl sm:text-4xl mb-2">⚡</div>
-              <h4 className="font-semibold text-gray-900 mb-1 text-base sm:text-lg">极速下载</h4>
-              <p className="text-xs sm:text-sm text-gray-600">高速服务器快速体验</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-xl sm:rounded-2xl shadow-md p-5 sm:p-8 mb-6 sm:mb-8">
+            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">
+              为什么选择我们？
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+              <div className="text-center p-3 sm:p-0">
+                <div className="text-3xl sm:text-4xl mb-2">🎮</div>
+                <h4 className="font-semibold text-gray-900 mb-1 text-base sm:text-lg">精选平台</h4>
+                <p className="text-xs sm:text-sm text-gray-600">严格筛选优质娱乐平台</p>
+              </div>
+              <div className="text-center p-3 sm:p-0">
+                <div className="text-3xl sm:text-4xl mb-2">🔒</div>
+                <h4 className="font-semibold text-gray-900 mb-1 text-base sm:text-lg">安全可靠</h4>
+                <p className="text-xs sm:text-sm text-gray-600">官方正版安全保障</p>
+              </div>
+              <div className="text-center p-3 sm:p-0">
+                <div className="text-3xl sm:text-4xl mb-2">⚡</div>
+                <h4 className="font-semibold text-gray-900 mb-1 text-base sm:text-lg">极速下载</h4>
+                <p className="text-xs sm:text-sm text-gray-600">高速服务器快速体验</p>
+              </div>
             </div>
           </div>
         </div>
