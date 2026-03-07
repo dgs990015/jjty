@@ -136,7 +136,7 @@ function App() {
         <div className="max-w-6xl mx-auto px-4 py-5 sm:py-6 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="text-xs sm:text-sm text-gray-500 mb-1 sm:mb-2">
-              © 2026 玖玖娱乐 版权所有
+              © 2026 玖玖娱乐版权所有
             </p>
             <p className="text-xs text-gray-400">
 
