@@ -1,6 +1,11 @@
-import { Gamepad2, Download } from 'lucide-react';
+import { Gamepad2, Download, MessageCircle } from 'lucide-react';
 
 function App() {
+  const openTawkChat = () => {
+    if (window.Tawk_API && window.Tawk_API.maximize) {
+      window.Tawk_API.maximize();
+    }
+  };
   const games = [
     {
       id: 1,
@@ -139,6 +144,17 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* 自定义在线客服按钮 */}
+      <button
+        onClick={openTawkChat}
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 touch-manipulation"
+        style={{ backgroundColor: '#03a84e' }}
+        aria-label="在线客服"
+      >
+        <MessageCircle className="w-6 h-6 text-white" />
+        <span className="text-white font-semibold text-sm hidden sm:inline">在线客服</span>
+      </button>
     </div>
   );
 }
